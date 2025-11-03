@@ -3,200 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkedIn Homepage Clone</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Quiz App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Sticky Navbar -->
-    <nav class="navbar">
-        <div class="navbar__logo">Linked<span class="navbar__logo--in">in</span></div>
-        <div class="navbar__search">
-            <input type="text" placeholder="Search">
-        </div>
-        <ul class="navbar__menu">
-            <li><a href="#" class="navbar__item"><i class="fas fa-home"></i><span>Home</span></a></li>
-            <li><a href="#" class="navbar__item"><i class="fas fa-user-friends"></i><span>My Network</span></a></li>
-            <li><a href="#" class="navbar__item"><i class="fas fa-briefcase"></i><span>Jobs</span></a></li>
-            <li><a href="#" class="navbar__item"><i class="fas fa-comment-dots"></i><span>Messaging</span></a></li>
-            <li><a href="#" class="navbar__item"><i class="fas fa-bell"></i><span>Notifications</span></a></li>
-            <li><a href="#" class="navbar__item navbar__profile"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="navbar__profile-img"><span>Me</span></a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Layout -->
     <div class="container">
-        <!-- Left Sidebar -->
-        <aside class="sidebar sidebar--left">
-            <div class="profile-card">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Photo" class="profile-card__img">
-                <h2 class="profile-card__name">Aayush Sharma</h2>
-                <p class="profile-card__title">Frontend Developer at TechCorp</p>
-                <hr>
-                <div class="profile-card__recent">
-                    <h3>Recent</h3>
-                    <ul>
-                        <li><a href="#"># React Developers</a></li>
-                        <li><a href="#"># UI/UX Design</a></li>
-                        <li><a href="#"># Frontend Jobs</a></li>
-                    </ul>
-                </div>
+        <header>
+            <h1>Quiz App</h1>
+        </header>
+        
+        <main class="quiz-container">
+            <div class="progress">
+                <span id="question-progress">Question 1 of 5</span>
             </div>
-        </aside>
 
-        <!-- Main Feed -->
-        <main class="feed">
-            <!-- Post Creation Box -->
-            <div class="post-box" tabindex="0">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="post-box__img">
-                <button class="post-box__button" id="openPostModal">Start a post</button>
+            <div class="quiz-content">
+                <h2 id="question">Question goes here</h2>
+                
+                <form id="quiz-form">
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="answer" id="a" value="a" required>
+                            <label for="a">Option A</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" name="answer" id="b" value="b">
+                            <label for="b">Option B</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" name="answer" id="c" value="c">
+                            <label for="c">Option C</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" name="answer" id="d" value="d">
+                            <label for="d">Option D</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="next-btn">Next Question</button>
+                </form>
             </div>
-            <!-- CSS-only Modal -->
-            <input type="checkbox" id="postModalToggle" class="modal-toggle" hidden>
-            <div class="modal">
-                <label for="postModalToggle" class="modal__overlay"></label>
-                <div class="modal__content">
-                    <h2>Create a post</h2>
-                    <textarea placeholder="What do you want to talk about?" rows="4"></textarea>
-                    <div class="modal__actions">
-                        <label for="postModalToggle" class="modal__close">Cancel</label>
-                        <button class="modal__post">Post</button>
-                    </div>
-                </div>
+
+            <div id="result" class="result hide">
+                <h2>Quiz Completed!</h2>
+                <p>Your score: <span id="score">0</span> out of <span id="total-questions">5</span></p>
+                <button id="restart-btn">Restart Quiz</button>
             </div>
-            <!-- Sample Posts -->
-            <article class="post">
-                <div class="post__header">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="post__avatar">
-                    <div>
-                        <h3 class="post__name">Priya Verma</h3>
-                        <p class="post__title">Product Manager at InnovateX</p>
-                        <span class="post__time">2h ago</span>
-                    </div>
-                </div>
-                <p class="post__text">Excited to share our new product launch! 🚀 Check out the details below.</p>
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Post Image" class="post__img">
-                <div class="post__actions">
-                    <button class="post__action"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-                    <button class="post__action"><i class="fa-regular fa-comment"></i> Comment</button>
-                    <button class="post__action"><i class="fa-regular fa-share-from-square"></i> Share</button>
-                </div>
-            </article>
-            <article class="post">
-                <div class="post__header">
-                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="User" class="post__avatar">
-                    <div>
-                        <h3 class="post__name">Rahul Singh</h3>
-                        <p class="post__title">UI Designer at Creatify</p>
-                        <span class="post__time">5h ago</span>
-                    </div>
-                </div>
-                <p class="post__text">Just finished a new dashboard design for our client. Feedback is welcome!</p>
-                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Post Image" class="post__img">
-                <div class="post__actions">
-                    <button class="post__action"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-                    <button class="post__action"><i class="fa-regular fa-comment"></i> Comment</button>
-                    <button class="post__action"><i class="fa-regular fa-share-from-square"></i> Share</button>
-                </div>
-            </article>
-            <article class="post">
-                <div class="post__header">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="post__avatar">
-                    <div>
-                        <h3 class="post__name">Sonal Mehta</h3>
-                        <p class="post__title">Software Engineer at DevWorks</p>
-                        <span class="post__time">1d ago</span>
-                    </div>
-                </div>
-                <p class="post__text">Attended a great webinar on frontend performance optimization. Highly recommend!</p>
-                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Post Image" class="post__img">
-                <div class="post__actions">
-                    <button class="post__action"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-                    <button class="post__action"><i class="fa-regular fa-comment"></i> Comment</button>
-                    <button class="post__action"><i class="fa-regular fa-share-from-square"></i> Share</button>
-                </div>
-            </article>
         </main>
-
-        <!-- Right Sidebar -->
-        <aside class="sidebar sidebar--right">
-            <div class="card add-feed">
-                <h3>Add to your feed</h3>
-                <ul>
-                    <li><img src="https://randomuser.me/api/portraits/men/12.jpg" alt="User"><span>Rohit Jain</span><button>+ Follow</button></li>
-                    <li><img src="https://randomuser.me/api/portraits/women/23.jpg" alt="User"><span>Neha Kapoor</span><button>+ Follow</button></li>
-                </ul>
-            </div>
-            <div class="card ad">
-                <h3>Sponsored</h3>
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Ad">
-                <p>Upgrade your skills with TechMaster courses!</p>
-            </div>
-            <div class="card trending">
-                <h3>Trending Topics</h3>
-                <ul>
-                    <li><a href="#"># AI Revolution</a></li>
-                    <li><a href="#"># Remote Work</a></li>
-                    <li><a href="#"># Web Development</a></li>
-                </ul>
-            </div>
-        </aside>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <ul class="footer__links">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Accessibility</a></li>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Privacy & Terms</a></li>
-            <li><a href="#">Ad Choices</a></li>
-            <li><a href="#">Advertising</a></li>
-            <li><a href="#">Business Services</a></li>
-            <li><a href="#">Get the LinkedIn app</a></li>
-        </ul>
-        <p class="footer__copyright">LinkedIn Corporation © 2025</p>
-    </footer>
-</body>
-
-<!-- Basic JavaScript functionality -->
-<script>
-// Open/close post modal
-document.addEventListener('DOMContentLoaded', function() {
-    const postBox = document.querySelector('.post-box__button');
-    const modalToggle = document.getElementById('postModalToggle');
-    const modal = document.querySelector('.modal');
-    const modalOverlay = document.querySelector('.modal__overlay');
-    const modalClose = document.querySelector('.modal__close');
-
-    postBox.addEventListener('click', function() {
-        modalToggle.checked = true;
-    });
-    modalOverlay.addEventListener('click', function() {
-        modalToggle.checked = false;
-    });
-    modalClose.addEventListener('click', function() {
-        modalToggle.checked = false;
-    });
-
-    // Like button functionality
-    document.querySelectorAll('.post__action').forEach(function(btn) {
-        if (btn.textContent.trim().startsWith('Like')) {
-            btn.addEventListener('click', function() {
-                btn.classList.toggle('liked');
-                if (btn.classList.contains('liked')) {
-                    btn.innerHTML = '<i class="fa-solid fa-thumbs-up"></i> Liked';
-                } else {
-                    btn.innerHTML = '<i class="fa-regular fa-thumbs-up"></i> Like';
-                }
-            });
-        }
-    });
-
-});
-</script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
